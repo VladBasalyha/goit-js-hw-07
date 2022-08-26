@@ -14,18 +14,23 @@ galleryRoot.insertAdjacentHTML("beforeend", cardsMarkup);
 function makeGalleryMarkup(galleryItems) {
 	return galleryItems
 		.map(({ preview, original, description }) => {
-			return `<a class = 'gallery__item' 
-        href = '${original}'>
-        <img src = '${preview}'
-        class = 'gallery__image'
-        alt = '${description}'/>
-        </a>`;
+			return `<div class="gallery__item">
+  <a class="gallery__link" href="${original}">
+    <img
+      class="gallery__image"
+      src="${preview}"
+      data-source="${original}"
+      alt="${description}"
+    />
+  </a>
+</div>`;
 		})
 		.join("");
 }
 
 galleryRoot.addEventListener("click", getModalImage);
 
-getModalImage(evt) {
-    evt.preventDefault()
+function getModalImage(evt) {
+	evt.preventDefault();
+	basicLightbox.create(`<img src = "${evt.target.dataset.source}">`).show();
 }
