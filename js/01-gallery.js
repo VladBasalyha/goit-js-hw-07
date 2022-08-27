@@ -1,4 +1,5 @@
 import { galleryItems } from "./gallery-items.js";
+
 // Change code below this line
 
 console.log(galleryItems);
@@ -9,7 +10,6 @@ const galleryRoot = document.querySelector(".gallery");
 const cardsMarkup = makeGalleryMarkup(galleryItems);
 
 galleryRoot.insertAdjacentHTML("beforeend", cardsMarkup);
-// galleryRoot.insertAdjacentHTML("beforeend", cardsMarkup);
 
 function makeGalleryMarkup(galleryItems) {
 	return galleryItems
@@ -39,7 +39,7 @@ function getModalImage(evt) {
 	}
 
 	const instance = basicLightbox.create(`
-   
+	
       <img src = "${evt.target.dataset.source}">
 
 	  `);
