@@ -32,11 +32,23 @@ galleryRoot.addEventListener("click", getModalImage);
 
 function getModalImage(evt) {
 	evt.preventDefault();
-	const instance = basicLightbox.create(`
-    <div class="modal">
-      <img src = "${evt.target.dataset.source}">
-    </div>
-`);
+	const isGallerySwatchEl = evt.target.classList.contains("gallery__image");
 
+	if (!isGallerySwatchEl) {
+		return;
+	}
+
+	const instance = basicLightbox.create(`
+   
+      <img src = "${evt.target.dataset.source}">
+
+	  `);
+
+	window.addEventListener("keydown", escapeModalClose);
+	function escapeModalClose(evt) {
+		if (evt.code === "Escape") {
+			instance.close();
+		}
+	}
 	instance.show();
 }
