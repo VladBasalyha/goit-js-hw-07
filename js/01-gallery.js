@@ -32,5 +32,11 @@ galleryRoot.addEventListener("click", getModalImage);
 
 function getModalImage(evt) {
 	evt.preventDefault();
-	basicLightbox.create(`<img src = "${evt.target.dataset.source}">`).show();
+	const instance = basicLightbox.create(`
+    <div class="modal">
+      <img src = "${evt.target.dataset.source}">
+    </div>
+`);
+
+	instance.show();
 }
